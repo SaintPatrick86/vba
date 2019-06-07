@@ -1,0 +1,20 @@
+Public Sub InDateiSchreiben(Dateipfad As String, _
+                            Text As String, _
+                            Optional ByVal Anfuegen As Boolean)
+ 
+ 
+   Dim d As Integer
+ 
+   d = FreeFile()
+ 
+   If Anfuegen Then  'Text wird an vorhandenen Text angefügt
+      Open Dateipfad For Append As d
+   Else              'evtl. vorhandener Text wird überschrieben
+      Open Dateipfad For Output As d
+   End If
+ 
+   Print #d, Text;
+ 
+   Close d
+ 
+End Sub
