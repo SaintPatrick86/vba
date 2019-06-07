@@ -1,0 +1,15 @@
+Public Function getFolder()
+
+    Dim AppShell As Object
+    Dim BrowseDir As Variant
+    Dim Pfad As String
+
+    Set AppShell = CreateObject("Shell.Application")
+    Set BrowseDir = AppShell.BrowseForFolder(0, "Ordner auswählen", &H1000, 17)
+    On Error Resume Next
+    Pfad = BrowseDir.items().Item().Path
+    If Pfad = "" Then Exit Function
+    Debug.Print Pfad
+    On Error GoTo 0
+
+End Function
