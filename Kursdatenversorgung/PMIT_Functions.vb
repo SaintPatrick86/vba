@@ -1,4 +1,3 @@
-
 Public Function DateiName() As String
 Dim f As Office.FileDialog
 Set f = Application.FileDialog(msoFileDialogFilePicker)
@@ -16,7 +15,7 @@ Dim loErste As Long, loLetzte As Long
 With Worksheets(tabelle)
     If .FilterMode Then .ShowAllData
     loErste = .Cells(.Rows.Count, 9).End(xlUp).Offset(1, 0).Row
-    loLetzte = .Cells(.Rows.Count, 1).End(xlUp).Row
+    loLetzte = .Cells(.Rows.Count, 2).End(xlUp).Row
 End With
 
 Zeilenende = loLetzte
