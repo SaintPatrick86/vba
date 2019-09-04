@@ -14,7 +14,7 @@ csvpfad = PMIT_Functions.DateiName
 
 zeile = PMIT_Functions.Zeilenende(blatt)
 
-beginn = "A" & zeile
+beginn = "B" & zeile + 1
 
 Debug.Print beginn
 
@@ -31,7 +31,7 @@ End Sub
 
 Private Sub ImportCSVFromFolder(csvpfad As String, strCSVDelimiter As String, blatt As String, beginn As String)
 
-    Dim wsTemp As Worksheet, wsTarget As Worksheet, curCell As Range, fso As Object, f As Object
+    Dim wsTemp As Worksheet, wsTarget As Worksheet, curCell As Range, fso As Object, f As Object, akt As Integer
 
     'Legt das CSV-Trennzeichen für die Dateien fest
 
@@ -90,12 +90,11 @@ Private Sub ImportCSVFromFolder(csvpfad As String, strCSVDelimiter As String, bl
 
 
             'Ausgabezeile eins nach unten schieben
-
-
-            Set curCell = wsTarget.Cells(wsTarget.UsedRange.Rows.Count + 2, 2)
-
-   
-    'Temporäres Sheet löschen
+    
+    akt = PMIT_Functions.Zeilenende(blatt)
+    
+    
+    Set curCell = wsTarget.Cells(akt + 1, 2)
 
 
     'Spalten anpassen
